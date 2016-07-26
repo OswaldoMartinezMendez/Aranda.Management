@@ -1,6 +1,3 @@
-/**
- * Created by oswaldo on 7/20/2016.
- */
 module.exports = function (grunt) {
     grunt.initConfig({
         jshint: {

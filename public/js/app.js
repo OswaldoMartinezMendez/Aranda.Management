@@ -1,79 +1,49 @@
 //app.js
 (function () {
     "use strict";
-    var module = angular.module("pizzaApp", ["ngRoute"]);
+    var module = angular.module("loginApp", ["ngRoute", "common.services"]);
 
-    module.config(function ($routeProvider) {
+    module.config(function ($routeProvider, $httpProvider) {
         $routeProvider.when('/', {
-            templateUrl: 'templates/order.tmpl.html',
-            controller: 'orderController',
-            controllerAs: 'order'
+            templateUrl: 'templates/login.tmpl.html',
+            controller: 'loginController',
+            controllerAs: 'login'
         });
 
         $routeProvider.otherwise({redirectTo: '/'});
 
-        $routeProvider.when('/status', {
-            templateUrl: 'templates/status.tmpl.html',
-            controller: 'statusController',
-            controllerAs: 'status'
+        $routeProvider.when('/users', {
+            templateUrl: 'templates/users.tmpl.html',
+            controller: 'userController',
+            controllerAs: 'user'
         });
 
+        $httpProvider.interceptors.push(function (appSettings, tokenContainer) {
+            return {
+                'request': function (config) {
+
+                    // if it's a request to the API, we need to provide the
+                    // access token as bearer token.
+                    if (config.url.indexOf(appSettings.userAPI) === 0) {
+                        config.headers.Authorization = 'Bearer ' + tokenContainer.getToken().token;
+                    }
+
+                    return config;
+                }
+
+            };
+        });
 
     });
 
-    module.controller("orderController", function () {
-        var order = this;
-        order.orderCount = 0;
-        order.addOrder = function () {
-            order.orderCount++;
-        };
-    });
-
-    module.controller('statusController', function () {
-        var status = this;
-        status.steps = [
-            {
-                num: 1,
-                name: 'Make Pie'
-            },
-            {
-                num: 2,
-                name: 'Bake Pie'
-            },
-            {
-                num: 3,
-                name: 'box Pie'
-            },
-            {
-                num: 4,
-                name: 'Queue Pie'
-            },
-            {
-                num: 5,
-                name: 'Deliver Pie'
-            },
-            {
-                num: 6,
-                name: 'Collect Money'
-            }
-        ];
-
-        status.currentStep = 2;
-    });
-
-    /**
-     *@ngdoc directive
-     * @name wmPizzaBar
-     * @description show a pizza bar
-     */
-    module.directive('wmPizzaBar', function () {
-
-        return {
-            link: function (scope, element, attrs) {
-                element.text('this is the statusBar');
-            },
-
-            restrict : 'E'
-        };
-    });
+    // module.directive('wmPizzaBar', function () {
+    //
+    //     return {
+    //         link: function (scope, element, attrs) {
+    //             element.text('this is the statusBar');
+    //         },
+    //
+    //         restrict : 'E'
+    //     };
+    // });
 })();

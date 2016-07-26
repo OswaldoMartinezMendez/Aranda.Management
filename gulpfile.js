@@ -1,6 +1,3 @@
-/**
- * Created by oswaldo on 7/20/2016.
- */
 var gulp = require("gulp");
 var jshint = require("gulp-jshint");
 
