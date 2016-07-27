@@ -9,9 +9,9 @@
                 userResource])
 
     function userResource($resource, appSettings) {
-        return $resource(appSettings.userAPI + "/api/profiles",null,{
-            'get' : { method: 'GET' }
-        });
+        return { currentUser : $resource(appSettings.userAPI + "/api/Users",null,{'get' : { method: 'GET' }}),
+                 allUsers : $resource(appSettings.userAPI + "/api/allUsers")
+                };
     };
 
     var createJsonPatchDocument = function (data) {

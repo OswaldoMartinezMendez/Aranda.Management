@@ -1,0 +1,30 @@
+<div class="form-horizontal leftMarginDefault">
+    <h2 class="leftMarginSmaller">Nuevo Usuario</h2>
+    <form role="form">
+        <div class="form-group">
+            <label for="name">Nombre Completo:</label>
+            <input type="text" class="form-control" id="name" placeholder="Nombre Completo" ng-model="reg.Name" required>
+        </div>
+        <div class="form-group">
+            <label for="Address">Dirección:</label>
+            <input type="text" class="form-control" id="Address" placeholder="Dirección" ng-model="reg.Address"required>
+        </div>
+        <div class="form-group">
+            <label for="Phone">Teléfono:</label>
+            <input type="tel" class="form-control" id="Phone" placeholder="Teléfono" ng-model="reg.Phone" required>
+        </div>
+        <div class="form-group">
+            <label for="Subject">Tema</label>
+            <input type="text" class="form-control" id="Subject" placeholder="tema" ng-model="reg.Subject" required>
+        </div>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" class="form-control" id="email" placeholder="e-mail" ng-model="reg.Email" required>
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" id="password" placeholder="password" ng-model="reg.Password" required>
+        </div>
+        <button type="submit" class="btn btn-default" ng-click="reg.submitForm()">Registrar</button>
+    </form>
+</div>

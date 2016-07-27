@@ -7,18 +7,26 @@
 
     function userController(userResource) {
         var user = this;
-        user.loadUsers = function () {
-            userResource.get(function (value) {
+        user.user = "Anybody";
+        user.current = function () {
+            userResource.currentUser.get(function (value) {
                 user.user = value;
-            },function (error) {
-                user.users = error;
-                window.location = window.location.protocol + "//" + window.location.host + "#/";
+                console.log("intentanto log");
+                //user.loadUsers();
+            }, function (error) {
+                user.user = error;
+                //window.location = window.location.protocol + "//" + window.location.host + "#/Users";
             });
+        };
 
+        user.loadUsers = function () {
+            userResource.allUsers.get({},function (value) {
+                debugger;
+                console.log(value);
+                user.all = value;
+            });
+        };
 
-            console.log(user.users);
-        }
-
-        user.loadUsers();
+        user.current();
     }
 }());

@@ -18,6 +18,12 @@
             controllerAs: 'user'
         });
 
+        $routeProvider.when('/newUser', {
+            templateUrl: 'templates/newUser.html',
+            controller: 'regController',
+            controllerAs: 'reg'
+        });
+
         $httpProvider.interceptors.push(function (appSettings, tokenContainer) {
             return {
                 'request': function (config) {
@@ -35,15 +41,4 @@
         });
 
     });
-
-    // module.directive('wmPizzaBar', function () {
-    //
-    //     return {
-    //         link: function (scope, element, attrs) {
-    //             element.text('this is the statusBar');
-    //         },
-    //
-    //         restrict : 'E'
-    //     };
-    // });
 })();

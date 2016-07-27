@@ -24,7 +24,7 @@
                 "username=" + encodeURI(login.credentials.username) + "&" +
                 "password=" + encodeURI(login.credentials.password) + "&" +
                 "scope=" + encodeURI("openid") + "&" +
-                "client_secret=secret&client_id=socialnetwork";
+                "client_secret=secret&client_id=Editor";
 
             // RFC requirements: when clientid/secret are provided,
             // they must be sent through the Authorization header.
@@ -69,5 +69,13 @@
                 login.credentials.password = "";
             });
         }
+
+        login.logOut = function(){
+            localStorage.removeItem('jwtToken');
+            localStorage.removeItem('access_token');
+            window.location.href = "#/";
+        }
+
+        login.logOut();
     }
 }());

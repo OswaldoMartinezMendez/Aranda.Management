@@ -2,3 +2,39 @@
 <div>
     hello User {{user.user.Name}}
 </div>
+<spam>{{user.user.user}}</spam>
+{{user.user.user}}
+<div class="table-container">
+    <table class="table table-filter">
+        <tbody>
+        <tr data-status="pagado" ng-repeat="item in user.user.all">
+            <td>
+                <div class="ckbox">
+                    <input type="checkbox" id="checkbox1">
+                    <label for="checkbox1"></label>
+                </div>
+            </td>
+            <td>
+                <a href="javascript:;" class="star">
+                    <i class="glyphicon glyphicon-star"></i>
+                </a>
+            </td>
+            <td>
+                <div class="media">
+                    <a href="#" class="pull-left">
+                        <img src="https://s3.amazonaws.com/uifaces/faces/twitter/fffabs/128.jpg" class="media-photo">
+                    </a>
+                    <div class="media-body">
+                        <span class="media-meta pull-right">Febrero 13, 2016</span>
+                        <h4 class="title">
+                            {{item.name}}
+                            <span class="pull-right pagado">(Pagado)</span>
+                        </h4>
+                        <p class="summary">Ut enim ad minim veniam, quis nostrud exercitation...</p>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
