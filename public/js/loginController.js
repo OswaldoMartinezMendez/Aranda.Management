@@ -3,9 +3,9 @@
     angular
         .module("loginApp")
         .controller("loginController",
-            ["$http", LoginController]);
+            ["$http", "tokenContainer",LoginController]);
 
-    function LoginController($http) {
+    function LoginController($http,tokenContainer) {
         var login = this;
 
         login.loginError = "";
@@ -71,6 +71,7 @@
         }
 
         login.logOut = function(){
+            tokenContainer.setToken("");
             localStorage.removeItem('jwtToken');
             localStorage.removeItem('access_token');
             window.location.href = "#/";

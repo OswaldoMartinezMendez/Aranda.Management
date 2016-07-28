@@ -48,7 +48,8 @@
 
         // return value to call when calling the API
         return {
-            getToken: getToken
+            getToken: getToken,
+            setToken : setToken
         };
 
 
