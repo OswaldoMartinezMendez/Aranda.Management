@@ -26,21 +26,11 @@
                 "scope=" + encodeURI("openid") + "&" +
                 "client_secret=secret&client_id=Editor";
 
-            // RFC requirements: when clientid/secret are provided,
-            // they must be sent through the Authorization header.
-            // cfr:https://tools.ietf.org/html/rfc6749#section-4.3
-
-            // encode the client id & client secret (btoa = built-in function
-            // for Base64 encoding)
-            //var encodedClientIdAndSecret = btoa("client_secret:secret");
-
             // the header
             var messageHeaders = {
                 'Content-Type': 'application/x-www-form-urlencoded',
                 //'Authorization': 'Basic ' + encodedClientIdAndSecret
             };
-
-            //debugger;
 
             return $http({
                 method: 'POST',
@@ -56,9 +46,7 @@
                 login.credentials.password = "";
 
                 // redirect to root
-                console.log(localStorage["access_token"]);
                 window.location = window.location.protocol + "//" + window.location.host + "#/users";
-                //login.$apply(function() { $location.path("/users"); });
 
             }).error(function (data) {
                 // show error on screen

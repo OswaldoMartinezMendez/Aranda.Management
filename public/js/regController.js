@@ -8,13 +8,6 @@
     function regController($http, appSettings) {
         var reg = this;
 
-        // reg.Name = "";
-        // reg.Address = "";
-        // reg.Phone = "";
-        // reg.Subject = "";
-        // reg.Email = "";
-        // reg.Password = "";
-
         reg.getComments = function () {
             $http({
                 method: 'POST',
@@ -31,7 +24,7 @@
                 headers: {'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8'}
             }).success(function (data) {
                 console.log("OK", data);
-                window.location = window.location.protocol + "//" + window.location.host + "#/users";
+                window.location = window.location.protocol + "//" + window.location.host + "#/";
             }).error(function (err) {
                 "ERR", console.log(err)
             })
