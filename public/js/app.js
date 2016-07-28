@@ -10,8 +10,6 @@
             controllerAs: 'login'
         });
 
-        $routeProvider.otherwise({redirectTo: '/'});
-
         $routeProvider.when('/users', {
             templateUrl: 'templates/users.tmpl.html',
             controller: 'userController',
@@ -22,6 +20,14 @@
             templateUrl: 'templates/newUser.html',
             controller: 'regController',
             controllerAs: 'reg'
+        });
+
+        $routeProvider.otherwise({redirectTo: '/'});
+
+        $routeProvider.when('/comments', {
+            templateUrl: 'templates/Comments.html',
+            controller: 'commentController',
+            controllerAs: 'com'
         });
 
         $httpProvider.interceptors.push(function (appSettings, tokenContainer) {

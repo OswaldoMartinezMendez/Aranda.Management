@@ -15,24 +15,11 @@
         // reg.Email = "";
         // reg.Password = "";
 
-
-        reg.submitForm = function () {
-            var user = {
-                "Address": reg.Address,
-                "Email": reg.Email,
-                "Phone": reg.Phone,
-                "Subject": reg.Subject,
-                "Name": reg.Name,
-                "Password": reg.Password,
-                "Username": reg.Email
-            };
-
-            console.log(user);
-
+        reg.getComments = function () {
             $http({
                 method: 'POST',
                 url: appSettings.userAPI + "/api/users",
-                data: {
+                data: $.param({
                     "Address": reg.Address,
                     "Email": reg.Email,
                     "Phone": reg.Phone,
@@ -40,17 +27,11 @@
                     "Name": reg.Name,
                     "Password": reg.Password,
                     "Username": reg.Email
-                },
-                headers: $.param({
-                    "cache-control": "no-cache",
-                    "postman-token": "e15774c8-4b2c-1eb8-d705-05eeebcfc517",
-                    "content-type": "application/x-www-form-urlencoded"
-                })
-
+                }),
+                headers: {'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8'}
             }).success(function (data) {
-
-                console.log("OK", data)
-
+                console.log("OK", data);
+                window.location = window.location.protocol + "//" + window.location.host + "#/users";
             }).error(function (err) {
                 "ERR", console.log(err)
             })
